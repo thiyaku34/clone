@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Chat App</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar / Contacts -->
+    <div class="sidebar">
+        <div class="profile">
+            <img src="/static/uploads/profile.png" alt="Profile">
+            <span>{{ session['username'] }}</span>
+        </div>
+
+        <div class="contacts">
+            <h3>Contacts</h3>
+            {% for user in users %}
+            {% if user.username != session['username'] %}
+            <a href="/chat/{{user.username}}" class="contact">
+                <div class="contact-info">
+                    <span class="contact-name">{{ user.username }}</span>
+                    <span class="online-status">🟢 Online</span>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Main Chat Area (empty initially) -->
+    <div class="main">
+        <h2>Welcome, {{ session['username'] }}</h2>
+        <p>Select a contact to start chatting.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

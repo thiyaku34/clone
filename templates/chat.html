@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat with {{ user }}</title>
+<link rel="stylesheet" href="/static/css/chat.css">
+<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+
+<div class="chat-container">
+
+    <!-- Header -->
+    <div class="chat-header">
+        <h3>Chat with {{ user }}</h3>
+        <a href="/home" class="back">← Back</a>
+
+              <div class="call-buttons">
+    <button onclick="startCall(false)">Voice Call</button>
+    <button onclick="startCall(true)">Video Call</button>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    <div id="messages" class="messages"></div>
+    <div id="typing" class="typing"></div>
+
+    <!-- Input -->
+  <div class="chat-input">
+    <input id="message" type="text" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <!-- Image send -->
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="sendImage()">Send Image</button>
+</div>
+
+    <!-- Media for WebRTC -->
+
+</div>
+
+<!-- Media elements for WebRTC -->
+<audio id="remoteAudio" autoplay></audio>
+<video id="localVideo" autoplay muted style="width:150px; display:none;"></video>
+<video id="remoteVideo" autoplay style="width:300px; display:none;"></video>
+</div>
+
+<script>
+var me = "{{ me }}";       // Logged-in user
+var toUser = "{{ user }}"; // Chat receiver
+</script>
+<script src="/static/js/chat.js"></script>
+</body>
+</html>
